@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/header";
+import { SuperDataProvider } from "@/components/superDataProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const universalSans = localFont({
+  src: "../public/UniversalSansGX-Medium (1).ttf",
+  variable: "--font-universal-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const polySansBrand = localFont({
+  src: "../public/PolySans-Neutral.otf",
+  variable: "--font-poly-sans-brand",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -24,10 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${universalSans.variable} ${polySansBrand.variable} antialiased`}>
+        <SuperDataProvider>
+          <Header />
+          <div className="h-full w-full max-w-4xl mx-auto flex flex-col items-center justify-center px-4 py-16">
+          {children}
+          </div>
+        </SuperDataProvider>
       </body>
     </html>
   );
