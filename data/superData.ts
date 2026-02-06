@@ -4,10 +4,16 @@ export const SUPER_DATA: SuperDataByUser = {
   anton: {
     usage: {
       caption: "Usage",
-      insight: "Wow, you are a real power user. You rank at 0.98% of all users.",
+      insight: "Top 0.98% this year: 13,841 searches and 291 assistant runs.",
       highlightedCharacters: [
         {
-          start: 44, end: 49 // highlights "0.98%"
+          start: 4, end: 9 // highlights "0.98%"
+        },
+        {
+          start: 21, end: 27 // highlights "13,841"
+        },
+        {
+          start: 41, end: 44 // highlights "291"
         },
       ],
       metrics: [
@@ -95,21 +101,32 @@ export const SUPER_DATA: SuperDataByUser = {
     },
     summary: {
       caption: "Demo insight",
-      insight: "Short narrative insight for the demo user.",
+      insight: "August spiked: 1,500 actions, then November hit 1,700.",
+      highlightedCharacters: [
+        {
+          start: 15, end: 20 // highlights "1,500"
+        },
+        {
+          start: 48, end: 53 // highlights "1,700"
+        },
+      ],
     },
     sources: {
       caption: "Demo Sources",
-      insight: "You have used 32 different sources and your favorite is Hubspot",
+      insight: "32 sources explored; Hubspot led the pack at 52% of lookups.",
       insertedImages: [
         {
           src: "/hubspot.svg",
           alt: "Hubspot",
-          characterPosition: 56
+          characterPosition: 21
         }
       ],
       highlightedCharacters: [
         {
-          start: 14, end: 16
+          start: 0, end: 2
+        },
+        {
+          start: 45, end: 48
         },
       ],
       sources: [
@@ -137,15 +154,15 @@ export const SUPER_DATA: SuperDataByUser = {
     },
     archetype: {
       caption: "Archetype",
-      insight: "You go deep on every source you touch.",
+      insight: "Deep Diver: you chase context before answers, not just quick hits.",
       image: "/archetypes/deepDiver.svg",
     },
     superPower: {
       caption: "Your Super Power",
-      insight: "You harnessed assistants and digests for exceptional speed, saving an estimated 56 hours.",
+      insight: "Assistants and digests saved an estimated 56 hours this year.",
       highlightedCharacters: [
         {
-          start: 80, end: 82 // highlights "56"
+          start: 42, end: 44 // highlights "56"
         },
       ],
       assistants: [
@@ -163,10 +180,16 @@ export const SUPER_DATA: SuperDataByUser = {
   carla: {
     usage: {
       caption: "Usage",
-      insight: "Wow, you are a real power user. You rank at 8.21% of all users.",
+      insight: "Top 8.21%: 10,124 searches and 198 assistant runs.",
       highlightedCharacters: [
         {
-          start: 44, end: 49 // highlights "0.98%"
+          start: 4, end: 9 // highlights "8.21%"
+        },
+        {
+          start: 11, end: 17 // highlights "10,124"
+        },
+        {
+          start: 31, end: 34 // highlights "198"
         },
       ],
       metrics: [
@@ -206,21 +229,29 @@ export const SUPER_DATA: SuperDataByUser = {
     },
     summary: {
       caption: "Summary",
-      insight: "Consistent momentum across the year, with strong bursts in late summer and winter.",
+      insight: "Late summer surge: August peaked at 1,060, then eased into winter.",
+      highlightedCharacters: [
+        {
+          start: 36, end: 41 // highlights "1,060"
+        },
+      ],
     },
     sources: {
       caption: "Sources",
-      insight: "You used 21 different sources and your favorite is Slack.",
+      insight: "21 sources total; Slack dominates with 65% of lookups.",
       insertedImages: [
         {
           src: "/sources/slack.svg",
           alt: "Slack",
-          characterPosition: 51,
+          characterPosition: 18,
         },
       ],
       highlightedCharacters: [
         {
-          start: 9, end: 11,
+          start: 0, end: 2,
+        },
+        {
+          start: 39, end: 42,
         },
       ],
       sources: [
@@ -248,7 +279,7 @@ export const SUPER_DATA: SuperDataByUser = {
     },
     archetype: {
       caption: "Archetype",
-      insight: "A pragmatic collaborator who blends research with action.",
+      insight: "Orchestrator: you align people fast and keep projects moving.",
       image: "/archetypes/orchestrator.svg",
     },
     superPower: {
