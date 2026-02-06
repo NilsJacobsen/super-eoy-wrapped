@@ -20,17 +20,24 @@ content.
 - `components/insightBlock.tsx` — inline highlights and image inserts
 - `app/*/page.tsx` — page layout per section
 
-## Provider flow
+## Provider flow (wizard-style routes)
 
 ```mermaid
-flowchart TD
-  A[SuperDataProvider] --> B[Context state]
-  B --> C[selectedUser]
-  B --> D[data by user]
-  E[Header dropdown] -->|setSelectedUser| C
-  F[Page component] -->|useSuperData| D
-  F -->|useSelectedUser| C
-  D --> G[Section data]
+flowchart LR
+  A[Route pages: /usage, /sources, /archetype, /super-power, /summary]
+  B[SuperDataProvider]
+  C[selectedUser state]
+  D[data/superData.ts]
+  E[useSuperData(username, topic)]
+  F[Section data for page]
+
+  A -->|consume provider| B
+  B --> C
+  B --> D
+  A -->|request topic| E
+  E -->|select by user + topic| D
+  D --> F
+  F --> A
 ```
 
 ## Local development
