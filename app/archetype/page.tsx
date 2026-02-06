@@ -11,7 +11,7 @@ export default function Archetype() {
   const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setTimeout(() => setIsRevealed(true), 1000));
+    const frame = requestAnimationFrame(() => setTimeout(() => setIsRevealed(true), 2000));
     return () => cancelAnimationFrame(frame);
   }, []);
 

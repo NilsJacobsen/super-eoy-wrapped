@@ -142,10 +142,10 @@ export const SUPER_DATA: SuperDataByUser = {
     },
     superPower: {
       caption: "Your Super Power",
-      insight: "You harnessed assistants and digests for exceptional speed, saving 56 hours.",
+      insight: "You harnessed assistants and digests for exceptional speed, saving an estimated 56 hours.",
       highlightedCharacters: [
         {
-          start: 67, end: 69 // highlights "56"
+          start: 80, end: 82 // highlights "56"
         },
       ],
       assistants: [
