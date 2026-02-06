@@ -20,25 +20,20 @@ content.
 - `components/insightBlock.tsx` — inline highlights and image inserts
 - `app/*/page.tsx` — page layout per section
 
-## Provider flow (wizard-style routes)
+## Architecture (simple + maintainable)
 
-```mermaid
-flowchart LR
-  A[Route pages: /usage, /sources, /archetype, /super-power, /summary]
-  B[SuperDataProvider]
-  C[selectedUser state]
-  D[data/superData.ts]
-  E[useSuperData(username, topic)]
-  F[Section data for page]
+The app is a wizard-style set of routes (`/usage`, `/sources`, `/archetype`,
+`/super-power`, `/summary`). Each page consumes the provider state and asks for
+only the data it needs: a specific user and a specific topic.
 
-  A -->|consume provider| B
-  B --> C
-  B --> D
-  A -->|request topic| E
-  E -->|select by user + topic| D
-  D --> F
-  F --> A
-```
+Data lives in a single place (`data/superData.ts`). The provider exposes a
+selected user and a tiny hook API:
+
+- `useSelectedUser()` to set the active user (one change updates all pages).
+- `useSuperData(username, topic)` to read just the section needed for that page.
+
+This keeps the system simple, maintainable, and easy to extend with new users or
+sections.
 
 ## Local development
 
