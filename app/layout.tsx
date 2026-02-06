@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/header";
 import { SuperDataProvider } from "@/components/superDataProvider";
+import Footer from "@/components/footer";
 
 const universalSans = localFont({
   src: "../public/UniversalSansGX-Medium (1).ttf",
@@ -28,12 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${universalSans.variable} ${polySansBrand.variable} antialiased`}>
+      <body className={`${universalSans.variable} ${polySansBrand.variable} antialiased min-h-screen`}>
         <SuperDataProvider>
           <Header />
-          <div className="h-full w-full max-w-4xl mx-auto flex flex-col items-center justify-center px-4 py-16">
-          {children}
+          <div className="h-screen w-full max-w-4xl mx-auto flex flex-col items-center justify-center px-4 py-16">
+            {children}
           </div>
+          <Footer />
         </SuperDataProvider>
       </body>
     </html>

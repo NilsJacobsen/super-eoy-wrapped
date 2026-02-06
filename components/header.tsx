@@ -2,26 +2,43 @@
 
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { XIcon } from "lucide-react";
+import { Settings2, XIcon } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { DropdownMenu } from "./ui/dropdown-menu";
+import { useSelectedUser } from "./superDataProvider";
 
 const Header = () => {
   const pathname = usePathname();
+  const { setSelectedUser } = useSelectedUser();
 
   return (
-    <header className="flex justify-between items-center px-8 py-4 fixed top-0 left-0 right-0 w-full">
-      <Link href="https://super.work" target="_blank">
-        <Image src="/Super_Wordmark_Dark.svg" alt="Logo" width={75} height={20} className="h-6"/>
+    <header className="flex justify-between items-center px-8 fixed top-0 left-0 right-0 w-full h-18">
+      <Link href="/" className="pt-2">
+        <Image src="/Super_Wordmark_Dark.svg" alt="Logo" width={75} height={20} className="h-6" />
       </Link>
-      {pathname !== "/" && <div className="flex items-center gap-4">
-        <Link href="/">
-          <Button variant="ghost" className="font-semibold">
+      <div className="flex items-center gap-4">
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon">
+              <Settings2 className="w-4 h-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>Users</DropdownMenuLabel>
+            <DropdownMenuItem className="cursor-pointer" onClick={() => setSelectedUser({ username: "anton", color: "#CE6BD6" })}>Anton</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer" onClick={() => setSelectedUser({ username: "carla", color: "#91A9F7" })}>Carla</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        {pathname !== "/" && <Link href="/">
+          <Button variant="ghost">
             <XIcon className="w-4 h-4" />
             Close
           </Button>
-        </Link>
-      </div>}
+        </Link>}
+      </div>
     </header>
   );
 };

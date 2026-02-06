@@ -7,30 +7,55 @@ export type SuperSectionKey =
   | "superPower";
 
 export type SuperSectionBase = {
-  title: string;
-  summary: string;
-  highlights: string[];
+  insight: string;
+  caption: string;
+  highlightedCharacters?: Array<{
+    start: number;
+    end: number;
+  }>;
+  insertedImages?: Array<{
+    src: string;
+    alt: string;
+    characterPosition: number;
+  }>;
 };
 
 export type SuperUsageSection = SuperSectionBase & {
-  metrics: Record<string, number>;
+  metrics: Array<{
+    name: "search" | "assistant" | "digest";
+    value: number;
+    trend: string;
+    description: string;
+  }>,
+  chartData: Array<{
+    month: string;
+    lastYear: number;
+    thisYear: number;
+  }>;
 };
 
-export type SuperSourcesSection = {
-  title: string;
+export type SuperSourcesSection = SuperSectionBase & {
   sources: Array<{
     name: string;
-    url?: string;
-    note?: string;
+    image: string;
+    percentage: number;
   }>;
 };
 
 export type SuperArchetypeSection = SuperSectionBase & {
-  traits: string[];
+  image: string;
 };
 
 export type SuperPowerSection = SuperSectionBase & {
-  evidence: string[];
+  assistants: Array<{
+    name: string;
+    runs: number;
+  }>;
+};
+
+export type SuperUserSelection = {
+  username: string;
+  color: string;
 };
 
 // Required sections per user; used to guide data generation.

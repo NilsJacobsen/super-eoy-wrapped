@@ -1,38 +1,75 @@
 "use client";
 
 import { SUPER_DATA } from "@/data/superData";
-import { SuperSectionKey, SuperUserData } from "@/data/types";
-import { createContext, useContext } from "react";
+import {
+  SuperSectionKey,
+  SuperUserData,
+  SuperUserSelection,
+} from "@/data/types";
+import { createContext, useContext, useMemo, useState } from "react";
 
 export type SuperDataByUser = Record<string, SuperUserData>;
 
-const SuperDataContext = createContext<SuperDataByUser | null>(null);
+type SuperDataContextValue = {
+  data: SuperDataByUser;
+  selectedUser: SuperUserSelection;
+  setSelectedUser: (selection: SuperUserSelection) => void;
+};
+
+const SuperDataContext = createContext<SuperDataContextValue | null>(null);
 
 type SuperDataProviderProps = {
   children: React.ReactNode;
   data?: SuperDataByUser;
+  initialUser?: SuperUserSelection;
+  userColors?: Record<string, string>;
 };
 
 export function SuperDataProvider({
   children,
   data = SUPER_DATA,
+  initialUser,
+  userColors = {},
 }: SuperDataProviderProps) {
+  const defaultUsername = useMemo(() => Object.keys(data)[0], [data]);
+  const [selectedUser, setSelectedUser] = useState<SuperUserSelection>(() => ({
+    username: initialUser?.username ?? defaultUsername ?? "demo",
+    color:
+      initialUser?.color ??
+      userColors[defaultUsername ?? "demo"] ??
+      "#176BE5",
+  }));
+
   return (
-    <SuperDataContext.Provider value={data}>
+    <SuperDataContext.Provider value={{ data, selectedUser, setSelectedUser }}>
       {children}
     </SuperDataContext.Provider>
   );
 }
 
 export function useSuperData<T extends SuperSectionKey>(
-  username: string,
+  username: string | undefined,
   usage: T,
 ) {
-  const data = useContext(SuperDataContext);
+  const context = useContext(SuperDataContext);
 
-  if (!data) {
+  if (!context) {
     throw new Error("useSuperData must be used within SuperDataProvider");
   }
 
-  return data[username]?.[usage] ?? null;
+  const resolvedUsername = username ?? context.selectedUser.username;
+  return context.data[resolvedUsername]?.[usage] ?? null;
+}
+
+export function useSelectedUser() {
+  const context = useContext(SuperDataContext);
+
+  if (!context) {
+    throw new Error("useSelectedUser must be used within SuperDataProvider");
+  }
+
+  return {
+    selectedUser: context.selectedUser,
+    setSelectedUser: context.setSelectedUser,
+  };
 }
