@@ -82,7 +82,7 @@ const InsightBlock = ({
 
   return (
     <div className={cn("w-full flex flex-col gap-4 items-center", className)}>
-      <h3 className={cn("text-3xl font-semibold text-center", gradientText)}>
+      <h3 className={cn("text-3xl font-semibold text-center pb-2", gradientText)}>
         {caption ?? ""}
       </h3>
       <h1 className="text-5xl font-brand text-center px-16 leading-[1.1]">{renderInsight()}</h1>

@@ -3,7 +3,7 @@ import { SuperDataByUser } from "@/components/superDataProvider";
 export const SUPER_DATA: SuperDataByUser = {
   anton: {
     usage: {
-      caption: "Usage",
+      caption: "Your year of searching",
       insight: "Top 0.98% this year: 13,841 searches and 291 assistant runs.",
       highlightedCharacters: [
         {
@@ -179,7 +179,7 @@ export const SUPER_DATA: SuperDataByUser = {
   },
   carla: {
     usage: {
-      caption: "Usage",
+      caption: "Your year of searching",
       insight: "Top 8.21%: 10,124 searches and 198 assistant runs.",
       highlightedCharacters: [
         {
