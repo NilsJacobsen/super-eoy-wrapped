@@ -20,6 +20,19 @@ content.
 - `components/insightBlock.tsx` — inline highlights and image inserts
 - `app/*/page.tsx` — page layout per section
 
+## Provider flow
+
+```mermaid
+flowchart TD
+  A[SuperDataProvider] --> B[Context state]
+  B --> C[selectedUser]
+  B --> D[data by user]
+  E[Header dropdown] -->|setSelectedUser| C
+  F[Page component] -->|useSuperData| D
+  F -->|useSelectedUser| C
+  D --> G[Section data]
+```
+
 ## Local development
 
 ```bash
