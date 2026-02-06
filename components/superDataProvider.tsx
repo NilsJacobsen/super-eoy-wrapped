@@ -33,11 +33,11 @@ export function SuperDataProvider({
 }: SuperDataProviderProps) {
   const defaultUsername = useMemo(() => Object.keys(data)[0], [data]);
   const [selectedUser, setSelectedUser] = useState<SuperUserSelection>(() => ({
-    username: initialUser?.username ?? defaultUsername ?? "demo",
+    username: initialUser?.username ?? defaultUsername ?? "anton",
     color:
       initialUser?.color ??
-      userColors[defaultUsername ?? "demo"] ??
-      "#176BE5",
+      userColors[defaultUsername ?? "anton"] ??
+      "#CE6BD6",
   }));
 
   return (
